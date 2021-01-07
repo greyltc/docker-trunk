@@ -7,6 +7,9 @@ jobs:
   multi-registries:
     runs-on: ubuntu-latest
     steps:
+      - name: Get current date
+        id: date
+        run: echo "TODAY=$(date +'%Y%m%d')" >> $GITHUB_ENV
       -
         name: Checkout
         uses: actions/checkout@v2
@@ -39,4 +42,6 @@ jobs:
           push: true
           tags: |
             greyltc/trunk:latest
+            greyltc/trunk:${{ env.TODAY }}.0.${{ github.run_number }}
             ghcr.io/greyltc/trunk:latest
+            ghcr.io/greyltc/trunk:${{ env.TODAY }}.0.${{ github.run_number }}
