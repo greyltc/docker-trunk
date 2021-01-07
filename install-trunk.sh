@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
-set -e
-set -u
 set -o pipefail
+set -o errexit
+set -o nounset
+set -o verbose
+set -o xtrace
 
 # build and install rust with wasm32-unknown-unknown target
 pacman -Syu --noprogressbar --needed --noconfirm rust
-su aurbuilder -c 'yes | yay -Syyu --removemake --noprogressbar --needed rust-wasm'
+sudo -u aurbuilder -D~ bash -c 'yes | yay -Syu --removemake --needed --noprogressbar rust-wasm'
 
 # build and install trunk
-su aurbuilder -c 'yay -Syyu --noconfirm --removemake --noprogressbar --needed trunk'
+sudo -u aurbuilder -D~ bash -c 'yay -S --noconfirm --removemake --needed --noprogressbar trunk'
 
 # clean cache
-su $AUR_USER -c 'yes | yay -Scc'
+sudo -u aurbuilder -D~ bash -c 'yes | yay -Scc'
