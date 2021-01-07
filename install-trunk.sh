@@ -11,4 +11,4 @@ su aurbuilder -c 'yes | yay -Syyu --removemake --noprogressbar --needed rust-was
 su aurbuilder -c 'yay -Syyu --noconfirm --removemake --noprogressbar --needed trunk'
 
 # clean cache
-su aurbuilder -c 'yay -Sc --noconfirm'
+su $AUR_USER -c 'yes | yay -Scc'
