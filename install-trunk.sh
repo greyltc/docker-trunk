@@ -16,4 +16,4 @@ sudo -u aurbuilder -D~ bash -c "yes | yay -Scc"
 sudo -u aurbuilder -D~ bash -c "yay -Syu --removemake --needed --noprogressbar --noconfirm trunk"
 
 # clean cache
-sudo -u aurbuilder -D~ bash -c 'yes | yay -Scc'
+sudo -u aurbuilder -D~ bash -c "yes | yay -Scc"
